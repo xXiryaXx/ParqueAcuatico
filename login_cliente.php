@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <button type="submit">Ingresar</button><br>
         <a href="login_admin.php">Iniciar como admin</a><br>
-        <a href="login_admin.php">Registrarse</a>
+        <a href="\ParqueAcuatico\cliente\formulario_cliente.php">Registrarse</a>
 
     </form>
 </body>
