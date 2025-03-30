@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($cliente) {
         $_SESSION['cliente'] = $cliente['nombre'];
         $_SESSION['codigo_compra'] = $cliente['codigo_compra'];
-        header('Location: cliente/ticket.php');
+        header('Location: cliente/carrito.php');
     } else {
         echo "<script>alert('Código de compra incorrecto.');</script>";
     }
