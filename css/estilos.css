@@ -59,7 +59,171 @@ th {
 .card img {
     width: 100%;
     height: 180px;
-    border-top-left-radius: 8px;
+    border-top-left-radius: 8px;/* Fondo degradado */
+body {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor principal centrado */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animación para el fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Títulos */
+h1, h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Estilo de los botones */
+button, .btn, .button {
+    background-color: #0072ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover, .btn:hover, .button:hover {
+    background-color: #00c6ff;
+    transform: translateY(-5px);
+}
+
+button:focus, .btn:focus, .button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 114, 255, 0.5);
+}
+
+/* Links con estilo */
+a {
+    color: #0072ff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #00c6ff;
+}
+
+/* Contenedores con imágenes */
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+}
+
+/* Efecto al pasar el mouse sobre la imagen */
+.img-container img:hover {
+    transform: scale(1.1);
+}
+
+/* Formularios */
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], select {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 400px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus {
+    border-color: #0072ff;
+    outline: none;
+}
+
+/* Estilos del formulario de compra */
+.formulario-compra {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    animation: slideIn 0.7s ease-out;
+}
+
+/* Animación para slideIn */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Elementos dentro del formulario */
+.formulario-compra input,
+.formulario-compra select {
+    margin: 10px 0;
+    width: 100%;
+    max-width: 350px;
+    font-size: 1rem;
+}
+
+.formulario-compra button {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 12px;
+}
+
+/* Tiempos de transición y efectos */
+input, select {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus {
+    background-color: #f0f8ff;
+    box-shadow: 0 0 10px rgba(0, 114, 255, 0.6);
+}
+
     border-top-right-radius: 8px;
 }
 .card h3 {

@@ -32,7 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Código de Compra:</label>
         <input type="text" name="codigo_compra" required>
         
-        <button type="submit">Ingresar</button>
+        <button type="submit">Ingresar</button><br>
+        <a href="login_admin.php">Iniciar como admin</a><br>
+        <a href="login_admin.php">Registrarse</a>
+
     </form>
 </body>
 </html>

@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Contraseña:</label>
         <input type="password" name="password" required>
         
-        <button type="submit">Ingresar</button>
+        <button type="submit">Ingresar</button><br>
+        <a href="login_cliente.php">Iniciar como cliente</a>
     </form>
 </body>
 </html>
