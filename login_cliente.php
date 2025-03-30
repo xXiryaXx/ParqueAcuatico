@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cliente = $stmt->fetch();
 
     if ($cliente) {
+        $_SESSION['id_cliente'] = $cliente['id_cliente'];
         $_SESSION['cliente'] = $cliente['nombre'];
         $_SESSION['codigo_compra'] = $cliente['codigo_compra'];
         header('Location: cliente/carrito.php');
