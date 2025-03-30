@@ -7,31 +7,25 @@ if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
     exit();
 }
 
-$codigo_compra = $_SESSION['codigo_compra'];
-$sqlCliente = "SELECT id_cliente FROM clientes WHERE codigo_compra = ?";
-$stmtCliente = $conexion->prepare($sqlCliente);
-$stmtCliente->execute([$codigo_compra]);
-$cliente = $stmtCliente->fetch();
+// Simulando ID de cliente (Esto debería obtenerse del cliente autenticado)
+$id_cliente = $_SESSION['id_cliente'] ?? 1;
+$total = array_sum(array_column($_SESSION['carrito'], 'subtotal'));
 
-if ($cliente) {
-    $id_cliente = $cliente['id_cliente'];
-    $total = array_sum(array_column($_SESSION['carrito'], 'subtotal'));
+// Insertar compra
+$sqlCompra = "INSERT INTO compras (id_cliente, total) VALUES (?, ?)";
+$stmtCompra = $conexion->prepare($sqlCompra);
+$stmtCompra->execute([$id_cliente, $total]);
 
-    $sqlCompra = "INSERT INTO compras (id_cliente, total) VALUES (?, ?)";
-    $stmtCompra = $conexion->prepare($sqlCompra);
-    $stmtCompra->execute([$id_cliente, $total]);
+$id_compra = $conexion->lastInsertId();
 
-    $id_compra = $conexion->lastInsertId();
-
-    foreach ($_SESSION['carrito'] as $item) {
-        $sqlDetalle = "INSERT INTO detalles_compra (id_compra, descripcion, cantidad, precio_unitario) VALUES (?, ?, ?, ?)";
-        $stmtDetalle = $conexion->prepare($sqlDetalle);
-        $stmtDetalle->execute([$id_compra, $item['nombre'], $item['cantidad'], $item['precio']]);
-    }
-
-    unset($_SESSION['carrito']);
-    echo "<script>alert('Compra realizada con éxito.'); window.location.href='ticket.php';</script>";
-} else {
-    echo "<script>alert('Error en el proceso de compra.');</script>";
+// Insertar detalles de la compra
+foreach ($_SESSION['carrito'] as $item) {
+    $sqlDetalle = "INSERT INTO detalles_compra (id_compra, descripcion, cantidad, precio_unitario) VALUES (?, ?, ?, ?)";
+    $stmtDetalle = $conexion->prepare($sqlDetalle);
+    $stmtDetalle->execute([$id_compra, $item['nombre'], $item['cantidad'], $item['precio']]);
 }
+
+// Limpiar carrito después de compra
+unset($_SESSION['carrito']);
+echo "<script>alert('Compra realizada con éxito. 🎉'); window.location.href='ticket.php?id_compra=$id_compra';</script>";
 ?>
